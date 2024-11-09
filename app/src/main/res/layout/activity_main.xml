@@ -28,7 +28,7 @@
         android:padding="8dp" />
 
     <!-- Floating Action Button to Add New Notes -->
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNoteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,8 +37,7 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_add"
         android:contentDescription="Add note"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        app:tint="@android:color/white"
-        android:elevation="4dp" />
+        android:elevation="4dp"
+        app:tint="@android:color/white" />
 
 </RelativeLayout>
