@@ -1,18 +1,42 @@
-// Note.java
 package com.example.notesproject;
 
 public class Note {
-    private int id;
     private String title;
     private String content;
     private String category;
 
-    public Note(int id, String title, String content, String category) {
-        this.id = id;
+    // Constructor
+    public Note(int anInt, String title, String content, String category) {
         this.title = title;
         this.content = content;
         this.category = category;
     }
 
-    // Getters and setters
+    // Getter for title
+    public String getTitle() {
+        return title;
+    }
+
+    // Getter for content
+    public String getContent() {
+        return content;
+    }
+
+    // Getter for category
+    public String getCategory() {
+        return category;
+    }
+
+    // Optional: Setter methods if needed
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }

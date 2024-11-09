@@ -4,4 +4,5 @@
     <item name="contentEditText" type="id" />
     <item name="categoryEditText" type="id" />
     <item name="saveButton" type="id" />
+    <item name="recyclerView" type="id" />
 </resources>
