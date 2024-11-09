@@ -36,6 +36,11 @@ public class AddEditNoteActivity extends AppCompatActivity {
             String content = contentEditText.getText().toString().trim();
             String category = categoryEditText.getText().toString().trim();
 
+            // If category is empty, set it to "Uncategorized"
+            if (category.isEmpty()) {
+                category = "Uncategorized";
+            }
+
             if (note == null) {
                 dbHelper.insertNote(new Note(title, content, category));
             } else {
