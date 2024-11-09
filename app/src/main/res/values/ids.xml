@@ -5,4 +5,19 @@
     <item name="categoryEditText" type="id" />
     <item name="saveButton" type="id" />
     <item name="recyclerView" type="id" />
+    <item name="text_view_title" type="id" />
+    <item name="text_view_content" type="id" />
+    <item name="text_view_category" type="id" />
+    <item name="button_edit" type="id" />
+    <item name="button_delete" type="id" />
+    <item name="edit_text_title" type="id" />
+    <item name="edit_text_content" type="id" />
+    <item name="spinner_category" type="id" />
+    <item name="button_save" type="id" />
+    <item name="edit_text_category" type="id" />
+    <item name="spinner_category_filter" type="id" />
+    <item name="recycler_view_notes" type="id" />
+    <item name="fab_add_note" type="id" />
+    <item name="text_view_content_preview" type="id" />
+    <item name="category_spinner" type="id" />
 </resources>

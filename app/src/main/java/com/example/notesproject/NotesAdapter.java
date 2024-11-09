@@ -1,20 +1,29 @@
 // NotesAdapter.java
 package com.example.notesproject;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder> {
+    private List<Note> notes;
+    private Context context;
 
-    private final List<Note> notes;
-
-    public NotesAdapter(List<Note> notes) {
+    public NotesAdapter(List<Note> notes, Context context) {
         this.notes = notes;
+        this.context = context;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -29,6 +38,21 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         Note note = notes.get(position);
         holder.titleTextView.setText(note.getTitle());
         holder.contentTextView.setText(note.getContent());
+        holder.categoryTextView.setText(note.getCategory());
+
+        holder.editButton.setOnClickListener(v -> {
+            Intent intent = new Intent(context, AddEditNoteActivity.class);
+            intent.putExtra("noteId", note.getId());
+            context.startActivity(intent);
+        });
+
+        holder.deleteButton.setOnClickListener(v -> {
+            NotesDatabaseHelper dbHelper = new NotesDatabaseHelper(context);
+            dbHelper.deleteNoteById(note.getId());
+            notes.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, notes.size());
+        });
     }
 
     @Override
@@ -36,13 +60,17 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         return notes.size();
     }
 
-    static class NoteViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView, contentTextView;
+    public static class NoteViewHolder extends RecyclerView.ViewHolder {
+        TextView titleTextView, contentTextView, categoryTextView;
+        ImageButton editButton, deleteButton;
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
-            titleTextView = itemView.findViewById(R.id.titleTextView);
-            contentTextView = itemView.findViewById(R.id.contentTextView);
+            titleTextView = itemView.findViewById(R.id.text_view_title);
+            contentTextView = itemView.findViewById(R.id.text_view_content);
+            categoryTextView = itemView.findViewById(R.id.text_view_category);
+            editButton = itemView.findViewById(R.id.button_edit);
+            deleteButton = itemView.findViewById(R.id.button_delete);
         }
     }
 }
